@@ -1,14 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Conta {
     private String titular;
     private double saldo;
     private double limite;
     private int numero;
+    private List<String> transacoes;
 
     public Conta(String titular, double limite, int numero) {
         this.titular = titular;
         this.saldo = 0;
         this.limite = limite;
         this.numero = numero;
+        this.transacoes = new ArrayList<>();
     }
 
     public double getSaldo() {
@@ -19,14 +24,16 @@ public class Conta {
         return numero;
     }
 
+    public List<String> getTransacoes() {
+        return transacoes;
+    }
+
     public void sacar(Saque saque) {
         if (saldo >= saque.getValor()) {
             saldo -= saque.getValor();
+            transacoes.add("Saque: " + saque.getValor() + " Data: " + saque.getData() + " Hora: " + saque.getHora()
+                    + " Descrição: " + saque.getDescricao());
             System.out.println("Saque realizado com sucesso!");
-            System.out.println("Valor: " + saque.getValor());
-            System.out.println("Data: " + saque.getData());
-            System.out.println("Hora: " + saque.getHora());
-            System.out.println("Descrição: " + saque.getDescricao());
         } else {
             System.out.println("Saldo insuficiente!");
         }
@@ -34,11 +41,9 @@ public class Conta {
 
     public void depositar(Deposito deposito) {
         saldo += deposito.getValor();
+        transacoes.add("Depósito: " + deposito.getValor() + " Data: " + deposito.getData() + " Hora: "
+                + deposito.getHora() + " Descrição: " + deposito.getDescricao());
         System.out.println("Depósito realizado com sucesso!");
-        System.out.println("Valor: " + deposito.getValor());
-        System.out.println("Data: " + deposito.getData());
-        System.out.println("Hora: " + deposito.getHora());
-        System.out.println("Descrição: " + deposito.getDescricao());
     }
 
 }

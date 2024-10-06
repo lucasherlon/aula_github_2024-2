@@ -40,7 +40,6 @@ public class Menu {
 				System.out.println("Opcao errada!");
 				op = 0;
 			}
-
 		}
 		executeOption(op);
 	}
@@ -54,10 +53,10 @@ public class Menu {
 				System.out.println("Abrir Conta");
 				break;
 			case 3:
-				System.out.println("Realizar saque");
+				realizarSaque();
 				break;
 			case 4:
-				System.out.println("Gerar Relatório");
+				gerarRelatorio();
 				break;
 			case 5:
 				System.out.println("Depósito");
@@ -79,6 +78,43 @@ public class Menu {
 				break;
 			default:
 				System.out.println("Opção inválida");
+		}
+	}
+
+	private void realizarSaque() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Informe o número da conta: ");
+		int numeroConta = s.nextInt();
+		System.out.println("Informe o valor do saque: ");
+		double valor = s.nextDouble();
+		s.nextLine(); // Consumir a nova linha
+		System.out.println("Informe a data do saque (dd/MM/yyyy): ");
+		String data = s.nextLine();
+		System.out.println("Informe a hora do saque (HH:mm): ");
+		String hora = s.nextLine();
+		System.out.println("Informe a descrição do saque: ");
+		String descricao = s.nextLine();
+		s.close();
+
+		Conta conta = banco.getConta(numeroConta);
+		if (conta != null) {
+			Saque saque = new Saque(valor, data, hora, descricao);
+			conta.sacar(saque);
+		} else {
+			System.out.println("Conta não encontrada!");
+		}
+	}
+
+	private void gerarRelatorio() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Informe o número da conta: ");
+		int numeroConta = s.nextInt();
+		s.close();
+		Conta conta = banco.getConta(numeroConta);
+		if (conta != null) {
+			Relatorio.gerarRelatorio(conta.getTransacoes());
+		} else {
+			System.out.println("Conta não encontrada!");
 		}
 	}
 }
