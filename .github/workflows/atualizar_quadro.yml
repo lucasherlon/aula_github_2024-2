@@ -1,0 +1,16 @@
+name: Atualizar quadro Kanban
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  move_issue_to_backlog:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Move issue to To Do
+      uses: alex-page/github-project-automation-plus@v0.8.3
+      with:
+        project: atividade_es2
+        column: To Do
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
