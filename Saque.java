@@ -1,17 +1,17 @@
-public class Deposito {
+public class Saque {
     private double valor;
     private String data;
     private String hora;
     private String descricao;
 
-    public Deposito(double valor, String data, String hora, String descricao) {
+    public Saque(double valor, String data, String hora, String descricao) {
         this.valor = valor;
         this.data = data;
         this.hora = hora;
         this.descricao = descricao;
     }
 
-    public Deposito(double valor) {
+    public Saque(double valor) {
         this.valor = valor;
     }
 
@@ -30,5 +30,4 @@ public class Deposito {
     public String getDescricao() {
         return descricao;
     }
-
 }

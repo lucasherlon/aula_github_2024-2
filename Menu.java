@@ -1,5 +1,3 @@
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,13 +15,14 @@ public class Menu {
 	public Menu(String title, List<String> options) {
 		this.title = title;
 		this.options = options;
+		banco = new Banco();
 	}
 
 	public void getSelection() {
 		int op = 0;
-		while (op==0){
-			System.out.println(title+"\n");
-			int i=1;
+		while (op == 0) {
+			System.out.println(title + "\n");
+			int i = 1;
 			for (String option : options) {
 				System.out.println(i++ + " - " + option);
 			}
@@ -31,15 +30,15 @@ public class Menu {
 			System.out.println("Informe a opcao desejada. ");
 			Scanner s = new Scanner(System.in);
 			String str = s.nextLine();
+			s.close();
 			try {
 				op = Integer.parseInt(str);
+			} catch (NumberFormatException e) {
+				op = 0;
 			}
-			catch (NumberFormatException e) {
-				op =0;
-			}
-			if (op>=i){
+			if (op >= i) {
 				System.out.println("Opcao errada!");
-				op=0;
+				op = 0;
 			}
 
 		}

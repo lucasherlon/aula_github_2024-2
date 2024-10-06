@@ -1,4 +1,4 @@
-public class Emprestimo{
+public class Emprestimo {
     private Conta conta;
     private double valor;
     private int parcelas;
@@ -15,8 +15,7 @@ public class Emprestimo{
     public void contratar() {
         if (conta.getSaldo() >= valor) {
             valorParcela = (valor + (valor * juros)) / parcelas;
-            conta.sacar(valor);
-            System.out.println("Empréstimo contratado com sucesso!");
+            conta.sacar(new Saque(valor));
             System.out.println("Valor do empréstimo: R$ " + valor);
             System.out.println("Número de parcelas: " + parcelas);
             System.out.println("Valor da parcela: R$ " + valorParcela);
