@@ -6,10 +6,12 @@ import java.util.Scanner;
 public class Menu {
 	private String title;
 	private List<String> options;
+	private Banco banco;
 
 	public Menu(List<String> options) {
 		this.title = "Menu";
 		this.options = options;
+		banco = new Banco();
 	}
 
 	public Menu(String title, List<String> options) {
@@ -17,7 +19,7 @@ public class Menu {
 		this.options = options;
 	}
 
-	public int getSelection() {
+	public void getSelection() {
 		int op = 0;
 		while (op==0){
 			System.out.println(title+"\n");
@@ -41,6 +43,43 @@ public class Menu {
 			}
 
 		}
-		return op;
+		executeOption(op);
+	}
+
+	public void executeOption(int op) {
+		switch (op) {
+			case 1:
+				System.out.println("Cadastrar Cliente");
+				break;
+			case 2:
+				System.out.println("Abrir Conta");
+				break;
+			case 3:
+				System.out.println("Realizar saque");
+				break;
+			case 4:
+				System.out.println("Gerar Relatório");
+				break;
+			case 5:
+				System.out.println("Depósito");
+				break;
+			case 6:
+				System.out.println("Pagamento de contas");
+				break;
+			case 7:
+				System.out.println("Contratar empréstimo");
+				break;
+			case 8:
+				System.out.println("Transferência");
+				break;
+			case 9:
+				System.out.println("Cancelamento de conta");
+				break;
+			case 10:
+				System.out.println("Atualização de dados cadastrais");
+				break;
+			default:
+				System.out.println("Opção inválida");
+		}
 	}
 }
