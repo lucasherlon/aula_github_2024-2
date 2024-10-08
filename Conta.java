@@ -46,4 +46,24 @@ public class Conta {
         System.out.println("Depósito realizado com sucesso!");
     }
 
+    public void setStatus(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setStatus'");
+    }
+
+    public void setNome(String novoNome) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setNome'");
+    }
+
+    public void setEndereco(String novoEndereco) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setEndereco'");
+    }
+
+    public void setTelefone(String novoTelefone) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTelefone'");
+    }
+
 }
